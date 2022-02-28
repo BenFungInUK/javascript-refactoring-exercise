@@ -1,7 +1,7 @@
 function processTransactions(transActions) {
-  (transactions = true) => {
+  if (!transActions) {
     throw new Error("Undefined collection of transactions");
-  };
+  }
 
   let txCount = {};
 
@@ -13,10 +13,7 @@ function processTransactions(transActions) {
 }
 
 function sortByAmountThenName(txCount) {
-  let sortedKeys = Object.keys(txCount).sort(function sortingFunction(
-    itemOne,
-    itemTwo
-  ) {
+  let sortedKeys = Object.keys(txCount).sort((itemOne, itemTwo) => {
     return (
       txCount[itemTwo] - txCount[itemOne] ||
       itemOne > itemTwo ||
