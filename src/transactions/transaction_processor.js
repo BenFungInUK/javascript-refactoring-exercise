@@ -9,18 +9,9 @@ function processTransactions(transActions) {
     txCount[item] ? (txCount[item] += 1) : (txCount[item] = 1)
   );
 
-  return sortByAmountThenName(txCount);
-}
-
-function sortByAmountThenName(txCount) {
-  const sortedKeys = Object.keys(txCount).sort(
-    (itemOne, itemTwo) =>
-      txCount[itemTwo] - txCount[itemOne] ||
-      itemOne > itemTwo ||
-      -(itemOne < itemTwo)
-  );
-
-  return sortedKeys.map((item) => `${item} ${txCount[item]}`);
+	return Object.keys(txCount).sort((itemOne, itemTwo) =>
+            txCount[itemTwo] - txCount[itemOne] || itemOne > itemTwo || -(itemOne < itemTwo))
+        .map(item => `${item} ${txCount[item]}`)；
 }
 
 module.exports = processTransactions;
